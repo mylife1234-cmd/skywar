@@ -326,3 +326,8 @@
 	"begin_code.h"
 	"close_code.h"
 
+1585965368 source:d:\bai_tap_giua_ki\game\game.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+

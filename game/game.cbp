@@ -36,7 +36,7 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer" />
 			<Add directory="../SDL2-2.0.5/i686-w64-mingw32/lib" />
 		</Linker>
-		<Unit filename="gamesnake.cpp" />
+		<Unit filename="game.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
