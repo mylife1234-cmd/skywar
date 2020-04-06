@@ -1,6 +1,7 @@
 #include<iostream>
 #include<SDL.h>
 #include<SDL_image.h>
+#include<string>
 using namespace std;
 const int SCREEN_WIDTH=1200;
 const int SCREEN_HEIGHT=600;
@@ -9,35 +10,30 @@ bool Init();
 bool LoadMedia();
 void close();
 void waitUntilKeyPressed();
+void ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y);
 SDL_Surface *LoadSurface(std::string path);
 SDL_Window *window=NULL;
 SDL_Surface *screenSurface=NULL;
 SDL_Surface *LoadImage=NULL;
+SDL_Surface *Object=NULL;
 int main(int argc, char *argv[])
 {
-    //Start up SDL and create window
     if( !Init() )
 	{
 		cout << "Failed to initialize!\n" ;
 	}
 	else
 	{
-		//Load media
 		if( !LoadMedia() )
 		{
 			cout << "Failed to initialize!\n" ;
 		}
 		else
 		{
-			//Main loop flag
 			bool quit = false;
-
-			//Event handler
 			SDL_Event e;
-
 			while( !quit )
 			{
-				//Handle events on queue
 				while( SDL_PollEvent( &e ) != 0 )
 				{
 					//User requests quit
@@ -53,6 +49,9 @@ int main(int argc, char *argv[])
                 strectchRect.w=SCREEN_WIDTH;
                 strectchRect.h=SCREEN_HEIGHT;
                 SDL_BlitScaled(LoadImage,NULL,screenSurface, &strectchRect);
+                Object=LoadSurface("plane80.png");
+                if(Object==NULL) return 0;
+                ApplySurface(Object,LoadImage,200, 300);
 				//Update the surface
 				SDL_UpdateWindowSurface( window );
 			}
@@ -131,6 +130,11 @@ SDL_Surface *LoadSurface(std::string path)
             cout << "Unable to load optimized image" << SDL_GetError();
         }
         SDL_FreeSurface(loadedSurface);
+        if (optimizedSurface != NULL)
+        {
+            Uint32 color_key = SDL_MapRGB(optimizedSurface->format, 0, 0xFF, 0xFF);
+            SDL_SetColorKey(optimizedSurface,SDL_TRUE, color_key);
+        }
     }
     return optimizedSurface;
 }
@@ -143,4 +147,11 @@ void waitUntilKeyPressed()
             return;
         SDL_Delay(100);
     }
+}
+void ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y)
+{
+    SDL_Rect set;
+    set.x=x;
+    set.y=y;
+    SDL_BlitSurface(object,NULL,background,&set);
 }
