@@ -36,6 +36,12 @@
 			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer" />
 			<Add directory="../SDL2-2.0.5/i686-w64-mingw32/lib" />
 		</Linker>
+		<Unit filename="BaseObject.cpp" />
+		<Unit filename="BaseObject.h" />
+		<Unit filename="Common.cpp" />
+		<Unit filename="Common.h" />
+		<Unit filename="MainObject.cpp" />
+		<Unit filename="MainObject.h" />
 		<Unit filename="game.cpp" />
 		<Extensions>
 			<code_completion />

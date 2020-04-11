@@ -326,9 +326,33 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586190235 source:d:\bai_tap_giua_ki\game\game.cpp
+1586452180 source:d:\bai_tap_giua_ki\game\game.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+
+1586406353 d:\bai_tap_giua_ki\game\common.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
 	<string>
+	<SDL_main.h>
+
+1586404389 d:\bai_tap_giua_ki\game\baseobject.h
+
+1586451817 d:\bai_tap_giua_ki\game\mainobject.h
+	"Common.h"
+	"BaseObject.h"
+
+1586404487 source:d:\bai_tap_giua_ki\game\baseobject.cpp
+	"Common.h"
+	"BaseObject.h"
+
+1586406353 source:d:\bai_tap_giua_ki\game\common.cpp
+	"Common.h"
+
+1586452690 source:d:\bai_tap_giua_ki\game\mainobject.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
 
