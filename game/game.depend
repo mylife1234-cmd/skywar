@@ -326,7 +326,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1586452180 source:d:\bai_tap_giua_ki\game\game.cpp
+1586657482 source:d:\bai_tap_giua_ki\game\game.cpp
 	"Common.h"
 	"BaseObject.h"
 	"MainObject.h"
@@ -344,11 +344,11 @@
 	"Common.h"
 	"BaseObject.h"
 
-1586404487 source:d:\bai_tap_giua_ki\game\baseobject.cpp
+1586656845 source:d:\bai_tap_giua_ki\game\baseobject.cpp
 	"Common.h"
 	"BaseObject.h"
 
-1586406353 source:d:\bai_tap_giua_ki\game\common.cpp
+1586657090 source:d:\bai_tap_giua_ki\game\common.cpp
 	"Common.h"
 
 1586452690 source:d:\bai_tap_giua_ki\game\mainobject.cpp

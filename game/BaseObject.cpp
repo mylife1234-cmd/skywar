@@ -15,7 +15,7 @@ Baseobject::~Baseobject()
 }
 bool Baseobject::Loading(std::string path,SDL_Surface*&screenSurface)
 {
-    plane=LoadSurface("plane80.png",screenSurface);
+    plane=LoadSurface(path,screenSurface);
     if(plane==NULL)
     {
         return false;
