@@ -356,3 +356,100 @@
 	"BaseObject.h"
 	"MainObject.h"
 
+1587139370 source:e:\game\baseobject.cpp
+	"Common.h"
+	"BaseObject.h"
+
+1587142947 e:\game\common.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<SDL_main.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<ctime>
+
+1587139362 e:\game\baseobject.h
+
+1587143717 source:e:\game\common.cpp
+	"Common.h"
+
+1587146375 source:e:\game\game.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+	"Threat.h"
+
+1587145342 e:\game\mainobject.h
+	"Common.h"
+	"BaseObject.h"
+	<Vector>
+	"Butllet.h"
+
+1587145507 source:e:\game\mainobject.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+
+1587139202 e:\game\butllet.h
+	"BaseObject.h"
+
+1587139212 source:e:\game\butllet.cpp
+	"MainObject.h"
+	"Butllet.h"
+	"BaseObject.h"
+
+1587146189 source:e:\game\threat.cpp
+	"Threat.h"
+	"Common.h"
+	"BaseObject.h"
+
+1587145548 e:\game\threat.h
+	"Common.h"
+	"BaseObject.h"
+
+1587139370 source:d:\game\baseobject.cpp
+	"Common.h"
+	"BaseObject.h"
+
+1587139842 d:\game\common.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<SDL_main.h>
+
+1587139362 d:\game\baseobject.h
+
+1587139096 source:d:\game\common.cpp
+	"Common.h"
+
+1587139814 source:d:\game\game.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+	"Threat.h"
+
+1587139181 d:\game\mainobject.h
+	"Common.h"
+	"BaseObject.h"
+	<Vector>
+	"Butllet.h"
+
+1587139202 d:\game\butllet.h
+	"BaseObject.h"
+
+1587139240 d:\game\threat.h
+	"Common.h"
+	"BaseObject.h"
+
+1587139393 source:d:\game\mainobject.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+

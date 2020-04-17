@@ -29,8 +29,4 @@ void Baseobject::showObject(SDL_Surface*des)
         func::ApplySurface(plane,des,rect.x,rect.y);
     }
 }
-void Baseobject::setPreposion(int x, int y)
-{
-    rect.x=x;
-    rect.y=y;
-}
+

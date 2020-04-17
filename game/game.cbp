@@ -38,10 +38,14 @@
 		</Linker>
 		<Unit filename="BaseObject.cpp" />
 		<Unit filename="BaseObject.h" />
+		<Unit filename="Butllet.cpp" />
+		<Unit filename="Butllet.h" />
 		<Unit filename="Common.cpp" />
 		<Unit filename="Common.h" />
 		<Unit filename="MainObject.cpp" />
 		<Unit filename="MainObject.h" />
+		<Unit filename="Threat.cpp" />
+		<Unit filename="Threat.h" />
 		<Unit filename="game.cpp" />
 		<Extensions>
 			<code_completion />
