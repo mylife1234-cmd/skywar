@@ -12,7 +12,7 @@ struct MainObject:Baseobject
     vector <Butllet*> listButllet;
     MainObject();
     ~MainObject();
-    void InputAction(SDL_Event e, SDL_Surface* &screenSurface);
+    void InputAction(SDL_Event e, SDL_Surface* &screenSurface,Mix_Chunk* soundButllet[2]);
     void move(const int SCREEN_HEIGHT, const int SCREEN_WIDTH);
     //tham khảo cách kết nối đạn vs máy bay ở trang https://phattrienphanmem123az.com/lap-trinh-game-cpp/bai-7-dan-ban-va-xu-ly-chuot.html
     //dòng 12

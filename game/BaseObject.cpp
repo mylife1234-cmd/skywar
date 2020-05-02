@@ -22,11 +22,11 @@ bool Baseobject::Loading(std::string path,SDL_Surface*&screenSurface)
     }
     return true;
 }
-void Baseobject::showObject(SDL_Surface*des)
+void Baseobject::showObject(SDL_Surface*background)
 {
     if(plane!=NULL)
     {
-        func::ApplySurface(plane,des,rect.x,rect.y);
+        func::ApplySurface(plane,background,rect.x,rect.y);
     }
 }
 

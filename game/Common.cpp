@@ -1,6 +1,6 @@
 #include"Common.h"
 
-bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Surface* &screenSurface)
+bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Surface* &screenSurface,Mix_Chunk *soundBoom[2], Mix_Chunk *soundButllet[2])
 {
     bool success=true;
     if(SDL_Init(SDL_INIT_EVERYTHING)==-1)
@@ -10,14 +10,13 @@ bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Sur
     }
     else{
         //Create Window
-        window=SDL_CreateWindow("Sky War",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,SCREEN_WIDTH,SCREEN_HEIGHT,SDL_WINDOW_SHOWN);
+        window=SDL_CreateWindow(WINDOW_TITLE.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,SCREEN_WIDTH,SCREEN_HEIGHT,SDL_WINDOW_OPENGL);
         if(window==NULL)
         {
             cout << "Window could not be created! SDL_Error:" << SDL_GetError();
             success=false;
         }
         else{
-            //Initialize PNG loading
             int imgFlags=IMG_INIT_PNG;
             if(!(IMG_Init(imgFlags)& imgFlags) )
             {
@@ -29,9 +28,24 @@ bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Sur
             }
         }
     }
+    if(Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT,2,4096)==-1)
+    {
+        success=false;
+    }
+    soundBoom[0]=Mix_LoadWAV("Explosion+3.wav");
+    soundBoom[1]=Mix_LoadWAV("Explosion+6.wav");
+    soundButllet[0]=Mix_LoadWAV("Gun+Silencer.wav");
+    if(soundBoom[0]==NULL || soundButllet[0]==NULL || soundBoom[1]==NULL)
+    {
+        success=false;
+    }
+    if(TTF_Init()==-1)
+    {
+        return false;
+    }
     return success;
 }
-bool func::LoadMedia(SDL_Surface * &LoadImage,SDL_Surface* &screenSurface)
+bool func::LoadMedia(SDL_Surface *&LoadImage,SDL_Surface * &screenSurface)
 {
     bool success=true;
     LoadImage=LoadSurface("bg2.png",screenSurface);
@@ -75,16 +89,6 @@ SDL_Surface * LoadSurface(std::string path,SDL_Surface *&screenSurface)
     }
     return optimizedSurface;
 }
-void func::waitUntilKeyPressed()
-{
-    SDL_Event e;
-    while (true) {
-        if ( SDL_WaitEvent(&e) != 0 &&
-             (e.type == SDL_KEYDOWN || e.type == SDL_QUIT) )
-            return;
-        SDL_Delay(100);
-    }
-}
 void func::ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y)
 {
     SDL_Rect set;
@@ -92,93 +96,97 @@ void func::ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y
     set.y=y;
     SDL_BlitSurface(object,NULL,background,&set);
 }
-bool func::checkCollision( const SDL_Rect& a, const SDL_Rect & b )
+bool func::checkCollision( const SDL_Rect& object1, const SDL_Rect & object2 )
 {
-    //The sides of the rectangles
-    int leftA, leftB;
-    int rightA, rightB;
-    int topA, topB;
-    int bottomA, bottomB;
+    int left_a = object1.x;
+  int right_a = object1.x + object1.w;
+  int top_a = object1.y;
+  int bottom_a = object1.y + object1.h;
 
-    //Calculate the sides of rect A
-    leftA = a.x;
-    rightA = a.x + a.w;
-    topA = a.y;
-    bottomA = a.y + a.h;
+  int left_b = object2.x;
+  int right_b = object2.x + object2.w;
+  int top_b = object2.y;
+  int bottom_b = object2.y + object2.h;
 
-    //Calculate the sides of rect B
-    leftB = b.x;
-    rightB = b.x + b.w;
-    topB = b.y;
-    bottomB = b.y + b.h;
-//Here is where the collision detection happens. This code calculates the top/bottom and left/right of each of the collison boxes.
-    //If any of the sides from A are outside of B
-    if( bottomA <= topB )
+  // Case 1: size object 1 < size object 2
+  if (left_a > left_b && left_a < right_b)
+  {
+    if (top_a > top_b && top_a < bottom_b)
     {
-        return false;
+      return true;
     }
+  }
 
-     if( topA >=bottomB )
+  if (left_a > left_b && left_a < right_b)
+  {
+    if (bottom_a > top_b && bottom_a < bottom_b)
     {
-        return false;
+      return true;
     }
+  }
 
-     if( rightA+A <= leftB )
+  if (right_a > left_b && right_a < right_b)
+  {
+    if (top_a > top_b && top_a < bottom_b)
     {
-        return false;
+      return true;
     }
+  }
 
-     if( leftA>= rightB )
+  if (right_a > left_b && right_a < right_b)
+  {
+    if (bottom_a > top_b && bottom_a < bottom_b)
     {
-        return false;
+      return true;
     }
+  }
 
-        return true;
+  // Case 2: size object 1 < size object 2
+  if (left_b > left_a && left_b < right_a)
+  {
+    if (top_b > top_a && top_b < bottom_a)
+    {
+      return true;
+    }
+  }
 
-    //If none of the sides from A are outside
+  if (left_b > left_a && left_b < right_a)
+  {
+    if (bottom_b > top_a && bottom_b < bottom_a)
+    {
+      return true;
+    }
+  }
+
+  if (right_b > left_a && right_b < right_a)
+  {
+    if (top_b > top_a && top_b < bottom_a)
+    {
+      return true;
+    }
+  }
+
+  if (right_b > left_a && right_b < right_a)
+  {
+    if (bottom_b > top_a && bottom_b < bottom_a)
+    {
+      return true;
+    }
+  }
+
+   // Case 3: size object 1 = size object 2
+  if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
+  {
+    return true;
+  }
+
+  return false;
 }
-bool func::checkCollision1( const SDL_Rect& a, const SDL_Rect & b )
+void func::ApplySurface1(SDL_Surface*object,SDL_Surface*background,SDL_Rect *frame, int x, int y)
 {
-    //The sides of the rectangles
-    int leftA, leftB;
-    int rightA, rightB;
-    int topA, topB;
-    int bottomA, bottomB;
-
-    //Calculate the sides of rect A
-    leftA = a.x;
-    rightA = a.x + a.w;
-    topA = a.y;
-    bottomA = a.y + a.h;
-
-    //Calculate the sides of rect B
-    leftB = b.x;
-    rightB = b.x + b.w;
-    topB = b.y;
-    bottomB = b.y + b.h;
-//Here is where the collision detection happens. This code calculates the top/bottom and left/right of each of the collison boxes.
-    //If any of the sides from A are outside of B
-    if( bottomA <= topB )
-    {
-        return false;
-    }
-
-    if( topA >=bottomB )
-    {
-        return false;
-    }
-
-    if( rightA <= leftB )
-    {
-        return false;
-    }
-
-    if( leftA>= rightB )
-    {
-        return false;
-    }
-        return true;
-
-    //If none of the sides from A are outside
+    SDL_Rect offset;
+    offset.x=x;
+    offset.y=y;
+    SDL_BlitSurface(object,frame,background,&offset);
 }
 

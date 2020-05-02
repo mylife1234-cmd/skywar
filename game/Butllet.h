@@ -1,6 +1,7 @@
 #ifndef BUTLLET__H
 #define BUTLLET__H
 #include"BaseObject.h"
+#include"Common.h"
 struct Butllet :Baseobject
 {
     int x_butllet;
@@ -17,7 +18,7 @@ struct Butllet :Baseobject
     {
         move = _move;
     }
-    void setButlletPreposition(const int &width, const int &height)
+    void setButllet(const int &width, const int &height)
     {
         rect.w=width;
         rect.h=height;

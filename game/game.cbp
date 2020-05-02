@@ -38,6 +38,8 @@
 		</Linker>
 		<Unit filename="BaseObject.cpp" />
 		<Unit filename="BaseObject.h" />
+		<Unit filename="Boom.cpp" />
+		<Unit filename="Boom.h" />
 		<Unit filename="Butllet.cpp" />
 		<Unit filename="Butllet.h" />
 		<Unit filename="Common.cpp" />
@@ -46,6 +48,8 @@
 		<Unit filename="MainObject.h" />
 		<Unit filename="Threat.cpp" />
 		<Unit filename="Threat.h" />
+		<Unit filename="font.cpp" />
+		<Unit filename="font.h" />
 		<Unit filename="game.cpp" />
 		<Extensions>
 			<code_completion />

@@ -17,8 +17,8 @@ void Butllet::InputButlletAction(SDL_Event e)
 }
 void Butllet::GetButlletMove(const int& width, const int& height)
 {
-    rect.x+=20;
-    if(rect.x>width)
+    rect.x+=SPEED_BUTLLET;
+    if(rect.x>=width)
     {
         move=false;
     }

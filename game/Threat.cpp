@@ -3,11 +3,11 @@
 #include"BaseObject.h"
 Threat::Threat()
 {
-    rect.x=1200;
-    rect.y=400;
-    rect.w=80;
-    rect.h=33;
-    x_threat=7;
+    rect.x=SCREEN_WIDTH;
+    rect.y=RANGE;
+    rect.w=THREAT_WIDTH;
+    rect.h=THREAT_HEIGHT;
+    x_threat=0;
     y_threat=0;
 }
 Threat::~Threat()
@@ -16,12 +16,13 @@ Threat::~Threat()
 }
   void Threat::GetThreatMove(const int &width, const int& height)
  {
-    rect.x-=x_threat;
+    rect.x-=SPEED_THREAT;
+    x_threat+=INCREASE_SPEED;
     if(rect.x<0)
     {
         rect.x=1200;
-        int randomPreposition=rand()%400;
-                if(randomPreposition>400)
+        int randomPreposition=rand()%RANGE;
+                if(randomPreposition>RANGE)
                 {
                 randomPreposition=rect.x*(0.4);
                 }
@@ -32,8 +33,8 @@ Threat::~Threat()
  void Threat::resetThreat(const int & width)
  {
         rect.x=width;
-        int randomPreposition=rand()%400;
-        if(randomPreposition>400)
+        int randomPreposition=rand()%RANGE;
+        if(randomPreposition>RANGE)
         {
         randomPreposition=rect.x*(0.4);
         }

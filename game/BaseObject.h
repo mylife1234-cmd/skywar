@@ -1,6 +1,5 @@
 #ifndef BASE_OJECT__H
 #define BASE_OJECT__H
-
 struct Baseobject
 {
     SDL_Rect rect;
