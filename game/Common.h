@@ -18,8 +18,8 @@ const int LAND=140;
 const int SPEED_BACKGROUND=10;
 SDL_Surface *LoadSurface(std::string path, SDL_Surface *&screenSurface);
 //Threat
-const int NUMBER_OF_THREAT=50;
-const int INCREASE_SPEED=1;
+const int NUMBER_OF_THREAT=100;
+const int INCREASE_SPEED=100;
 const int THREAT_WIDTH=80;
 const int THREAT_HEIGHT=33;
 //BOOM FRAME
@@ -40,11 +40,11 @@ const int RANGE =480;
 namespace func{
    bool Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Surface* &screenSurface,Mix_Chunk *soundBoom[2], Mix_Chunk *soundButllet[2]);
     bool LoadMedia(SDL_Surface * &LoadImage,SDL_Surface* &screenSurface);
-    void close(SDL_Surface * &LoadImage,SDL_Window*&window );
+    void close(SDL_Surface * LoadImage,SDL_Window*window );
     void ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y);
     bool checkCollision( const SDL_Rect& a,const SDL_Rect& b );
     void ApplySurface1(SDL_Surface*object,SDL_Surface*background,SDL_Rect *frame ,int x, int y);
-    bool ShowMenu(SDL_Surface*background, TTF_Font *textFont, SDL_Surface *menuScreen,SDL_Window*window);
+    bool ShowMenu(SDL_Surface*background, TTF_Font *textFont, SDL_Surface *menuScreen,SDL_Window*window,SDL_Surface* LoadImage);
     bool ShowMenu2(SDL_Surface*background,int score, TTF_Font *textFont, SDL_Surface *menuScreen,SDL_Window*window,SDL_Surface* LoadImage);
 }
 #endif // COMMON_H
