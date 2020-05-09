@@ -24,15 +24,8 @@ bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window* &window, SDL_Su
             success=false;
         }
         else{
-            int imgFlags=IMG_INIT_PNG;
-            if(!(IMG_Init(imgFlags)& imgFlags) )
-            {
-                cout << "SDL_image could not initialize" << IMG_GetError();
-                success=false;
-            }
-            else{
                 screenSurface=SDL_GetWindowSurface(window);
-            }
+
         }
     }
     if(Mix_OpenAudio(22050,MIX_DEFAULT_FORMAT,2,4096)==-1)
