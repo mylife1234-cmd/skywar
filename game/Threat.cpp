@@ -14,7 +14,7 @@ Threat::~Threat()
 }
   void Threat::GetThreatMove(const int &width, const int& height)
  {
-    int SPEED_THREAT=5;
+    int SPEED_THREAT=10;
     rect.x-=SPEED_THREAT;
     SPEED_THREAT+=INCREASE_SPEED;
     if(rect.x<0)
