@@ -243,6 +243,10 @@ bool func::ShowMenu(SDL_Surface*background, TTF_Font *textFont,SDL_Surface*menuS
             }
             if(e.type==SDL_QUIT)
             {
+                func::close(LoadImage,window);
+                TTF_Quit();
+                IMG_Quit();
+                SDL_Quit();
                 return 0;
             }
         }
@@ -256,7 +260,7 @@ bool func::ShowMenu2(SDL_Surface*background,int score, TTF_Font *textFont, SDL_S
     //************************************
 	//	1. Set Preposition for menu
 	//	2. Input keyboard event
-	//	3. If press double backspace, game start
+	//	3. If press double backspace, game play again
 	//************************************
     menuScreen=LoadSurface("EXIT.png", background);
     if(menuScreen==NULL)
@@ -302,9 +306,9 @@ bool func::ShowMenu2(SDL_Surface*background,int score, TTF_Font *textFont, SDL_S
             if(e.type==SDL_QUIT)
             {
                 func::close(LoadImage,window);
-                    TTF_Quit();
-                    IMG_Quit();
-                    SDL_Quit();
+                TTF_Quit();
+                IMG_Quit();
+                SDL_Quit();
                 return 0;
             }
         }
