@@ -14,10 +14,12 @@ Tính năng:
 +thỉnh thoảng không điều khiển được máy bay, thỉnh thoảng va chạm ko xảy ra
 +chưa làm dc bản đồ chuẩn: chưa áp dụng được kỹ thuật tạo map cho trò chơi
 +game, phông chữ còn đơn điệu, chưa dc đẹp
++xử lí bộ nhớ chưa dc tốt
   Cải tiến:
 + tạo ra map cho game chân thực hơn
 + sửa lỗi ko điều khiển được máy bay, thỉnh thoảng đối tượng chạm vào nhau
 + cải tiến phông chữ
 + bắt đầu game không cần phải double space, double backspace.
 + có thể lưu dữ liệu điểm của nhiều người chơi
++cải tiến bộ nhớ tốt hơn
 Cảm ơn thầy cô, vs các bạn.
