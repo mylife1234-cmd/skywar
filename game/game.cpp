@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
             }
             unsigned int mark=0;
             bool again=false;
-            bool menu_=func::ShowMenu(screenSurface,fontText,menuScreen,window);
+            bool menu_=func::ShowMenu(screenSurface,fontText,menuScreen,window,LoadImage);
             if(menu_ ==true)
             {
                 quit=false;
