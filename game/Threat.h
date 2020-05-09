@@ -4,8 +4,6 @@
 #include"BaseObject.h"
 struct Threat :Baseobject
 {
-    int x_threat;
-    int y_threat;
     Threat();
     ~Threat();
     void GetThreatMove(const int & width, const int & height);

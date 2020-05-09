@@ -356,11 +356,11 @@
 	"BaseObject.h"
 	"MainObject.h"
 
-1588156456 source:e:\game\baseobject.cpp
+1588956463 source:e:\game\baseobject.cpp
 	"Common.h"
 	"BaseObject.h"
 
-1588303978 e:\game\common.h
+1589024480 e:\game\common.h
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -369,13 +369,15 @@
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 	<ctime>
+	"time.h"
 
 1588088493 e:\game\baseobject.h
 
-1588303968 source:e:\game\common.cpp
+1589014202 source:e:\game\common.cpp
 	"Common.h"
+	"font.h"
 
-1588251678 source:e:\game\game.cpp
+1589020897 source:e:\game\game.cpp
 	"Common.h"
 	"BaseObject.h"
 	"MainObject.h"
@@ -383,34 +385,35 @@
 	"Threat.h"
 	"Boom.h"
 	"font.h"
+	"time.h"
 
-1587836753 e:\game\mainobject.h
+1589024385 e:\game\mainobject.h
 	"Common.h"
 	"BaseObject.h"
 	<Vector>
 	"Butllet.h"
 
-1588260613 source:e:\game\mainobject.cpp
+1589014339 source:e:\game\mainobject.cpp
 	"Common.h"
 	"BaseObject.h"
 	"MainObject.h"
 	"Butllet.h"
 
-1588092739 e:\game\butllet.h
+1588956502 e:\game\butllet.h
 	"BaseObject.h"
 	"Common.h"
 
-1588090180 source:e:\game\butllet.cpp
+1588957188 source:e:\game\butllet.cpp
 	"MainObject.h"
 	"Butllet.h"
 	"BaseObject.h"
 
-1588152054 source:e:\game\threat.cpp
+1589014748 source:e:\game\threat.cpp
 	"Threat.h"
 	"Common.h"
 	"BaseObject.h"
 
-1587951826 e:\game\threat.h
+1589014765 e:\game\threat.h
 	"Common.h"
 	"BaseObject.h"
 
@@ -486,11 +489,100 @@
 	"BaseObject.h"
 	"Common.h"
 
-1588308981 source:e:\game\font.cpp
+1588957346 source:e:\game\font.cpp
 	"Common.h"
 	"font.h"
 
-1588308981 e:\game\font.h
+1588504733 e:\game\font.h
 	"BaseObject.h"
 	<cstring>
+
+1588693056 source:e:\code\game\baseobject.cpp
+	"Common.h"
+	"BaseObject.h"
+
+1588818820 e:\code\game\common.h
+	<iostream>
+	<SDL.h>
+	<SDL_image.h>
+	<cstring>
+	<SDL_main.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<ctime>
+	"time.h"
+
+1588088493 e:\code\game\baseobject.h
+
+1588090169 source:e:\code\game\boom.cpp
+	"Common.h"
+	"Boom.h"
+
+1588091149 e:\code\game\boom.h
+	"BaseObject.h"
+	"Common.h"
+
+1588090180 source:e:\code\game\butllet.cpp
+	"MainObject.h"
+	"Butllet.h"
+	"BaseObject.h"
+
+1588696153 e:\code\game\mainobject.h
+	"Common.h"
+	"BaseObject.h"
+	<Vector>
+	"Butllet.h"
+
+1588092739 e:\code\game\butllet.h
+	"BaseObject.h"
+	"Common.h"
+
+1588818810 source:e:\code\game\common.cpp
+	"Common.h"
+	"font.h"
+
+1588504733 e:\code\game\font.h
+	"BaseObject.h"
+	<cstring>
+
+1588504849 source:e:\code\game\font.cpp
+	"Common.h"
+	"font.h"
+
+1588696359 source:e:\code\game\mainobject.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+
+1588612766 source:e:\code\game\threat.cpp
+	"Threat.h"
+	"Common.h"
+	"BaseObject.h"
+
+1587951826 e:\code\game\threat.h
+	"Common.h"
+	"BaseObject.h"
+
+1588615630 source:e:\code\game\time.cpp
+	"time.h"
+
+1588819352 e:\code\game\time.h
+	"Common.h"
+
+1588818804 source:e:\code\game\game.cpp
+	"Common.h"
+	"BaseObject.h"
+	"MainObject.h"
+	"Butllet.h"
+	"Threat.h"
+	"Boom.h"
+	"font.h"
+	"time.h"
+
+1589020345 e:\game\time.h
+	"Common.h"
+
+1589020970 source:e:\game\time.cpp
+	"time.h"
 

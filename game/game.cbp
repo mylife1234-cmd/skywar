@@ -51,6 +51,8 @@
 		<Unit filename="font.cpp" />
 		<Unit filename="font.h" />
 		<Unit filename="game.cpp" />
+		<Unit filename="time.cpp" />
+		<Unit filename="time.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

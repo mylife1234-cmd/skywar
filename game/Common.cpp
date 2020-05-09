@@ -1,7 +1,14 @@
 #include"Common.h"
-
-bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Surface* &screenSurface,Mix_Chunk *soundBoom[2], Mix_Chunk *soundButllet[2])
+#include"font.h"
+//FUNTION CHECK AND INIT WINDOW,IMAGE,MUSIC AND FONT
+bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window* &window, SDL_Surface* &screenSurface,Mix_Chunk *soundBoom[2], Mix_Chunk *soundButllet[2])
 {
+    //************************************
+	//	1. Check and initialize window
+	//	2. Check and initialize image
+	//	3.Check and initialize music
+	//	4. Check and initialize font
+	//************************************
     bool success=true;
     if(SDL_Init(SDL_INIT_EVERYTHING)==-1)
     {
@@ -45,10 +52,11 @@ bool func::Init(int SCREEN_WIDTH, int SCREEN_HEIGHT, SDL_Window*&window, SDL_Sur
     }
     return success;
 }
+//CHECK AND LOAD BACKGROUND ON THE SCREEN
 bool func::LoadMedia(SDL_Surface *&LoadImage,SDL_Surface * &screenSurface)
 {
     bool success=true;
-    LoadImage=LoadSurface("bg2.png",screenSurface);
+    LoadImage=LoadSurface("bg1.png",screenSurface);
     if(LoadImage==NULL)
     {
         cout << "Unable to load image" << SDL_GetError();
@@ -57,6 +65,7 @@ bool func::LoadMedia(SDL_Surface *&LoadImage,SDL_Surface * &screenSurface)
     return success;
 
 }
+//FREE SURFACE
 void func::close(SDL_Surface * &LoadImage,SDL_Window*&window )
 {
     //Deallocate surface
@@ -66,6 +75,7 @@ void func::close(SDL_Surface * &LoadImage,SDL_Window*&window )
     window=NULL;
     SDL_Quit();
 }
+//LOAD OPTIMIZE BACKGROUND
 SDL_Surface * LoadSurface(std::string path,SDL_Surface *&screenSurface)
 {
     SDL_Surface *optimizedSurface=NULL;
@@ -96,92 +106,94 @@ void func::ApplySurface(SDL_Surface*object, SDL_Surface*background, int x, int y
     set.y=y;
     SDL_BlitSurface(object,NULL,background,&set);
 }
-bool func::checkCollision( const SDL_Rect& object1, const SDL_Rect & object2 )
+//CHECK COLLISION BETWEEN PLANE AND THREAT, BUTLLET AND THREAT
+bool func::checkCollision( const SDL_Rect& a, const SDL_Rect & b )
 {
-    int left_a = object1.x;
-  int right_a = object1.x + object1.w;
-  int top_a = object1.y;
-  int bottom_a = object1.y + object1.h;
+    int leftA = a.x;
+    int rightA = a.x + a.w;
+    int topA = a.y;
+    int bottomA = a.y + a.h;
 
-  int left_b = object2.x;
-  int right_b = object2.x + object2.w;
-  int top_b = object2.y;
-  int bottom_b = object2.y + object2.h;
+    int leftB = b.x;
+    int rightB = b.x + b.w;
+    int topB = b.y;
+    int bottomB = b.y + b.h;
 
-  // Case 1: size object 1 < size object 2
-  if (left_a > left_b && left_a < right_b)
-  {
-    if (top_a > top_b && top_a < bottom_b)
+    // Case 1: size object 1 < size object 2
+    if (leftA+PLANE_WIDTH > leftB && leftA < rightB)
     {
-      return true;
+        if (topA+PLANE_HEIGHT > topB && topA < bottomB)
+        {
+            return true;
+        }
     }
-  }
 
-  if (left_a > left_b && left_a < right_b)
-  {
-    if (bottom_a > top_b && bottom_a < bottom_b)
+    if (leftA+PLANE_WIDTH > leftB && leftA < rightB)
     {
-      return true;
+        if (bottomA > topB && bottomA < bottomB)
+        {
+          return true;
+        }
     }
-  }
 
-  if (right_a > left_b && right_a < right_b)
-  {
-    if (top_a > top_b && top_a < bottom_b)
+    if (rightA > leftB && rightA < rightB)
     {
-      return true;
+        if (topA > topB && topA < bottomB)
+        {
+          return true;
+        }
     }
-  }
 
-  if (right_a > left_b && right_a < right_b)
-  {
-    if (bottom_a > top_b && bottom_a < bottom_b)
+    if (rightA > leftB && rightA < rightB)
     {
-      return true;
+        if (bottomA > topB && bottomA < bottomB)
+        {
+          return true;
+        }
     }
-  }
 
-  // Case 2: size object 1 < size object 2
-  if (left_b > left_a && left_b < right_a)
-  {
-    if (top_b > top_a && top_b < bottom_a)
+    // Case 2: size object 1 < size object 2
+    if (leftB+PLANE_WIDTH > leftA && leftB < rightA)
     {
-      return true;
+        if (topB+PLANE_HEIGHT > topA && topB < bottomA)
+        {
+          return true;
+        }
     }
-  }
 
-  if (left_b > left_a && left_b < right_a)
-  {
-    if (bottom_b > top_a && bottom_b < bottom_a)
+    if (leftB+PLANE_WIDTH > leftA && leftB < rightA)
     {
-      return true;
+        if (bottomB > topA && bottomB < bottomA)
+        {
+          return true;
+        }
     }
-  }
 
-  if (right_b > left_a && right_b < right_a)
-  {
-    if (top_b > top_a && top_b < bottom_a)
+    if (rightB > leftA && rightB < rightA)
     {
-      return true;
+        if (topB > topA && topB < bottomA)
+        {
+          return true;
+        }
     }
-  }
 
-  if (right_b > left_a && right_b < right_a)
-  {
-    if (bottom_b > top_a && bottom_b < bottom_a)
+    if (rightB > leftA && rightB < rightA)
     {
-      return true;
+        if (bottomB > topA && bottomB < bottomA)
+        {
+          return true;
+        }
     }
-  }
 
-   // Case 3: size object 1 = size object 2
-  if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
-  {
-    return true;
-  }
-
-  return false;
+       // Case 3: size object 1 = size object 2
+    if (topA == topB && rightA == rightB && bottomA == bottomB)
+    {
+        return true;
+    }
+    return false;
 }
+
+//APPLY FRAME ON THE SCREEN
 void func::ApplySurface1(SDL_Surface*object,SDL_Surface*background,SDL_Rect *frame, int x, int y)
 {
     SDL_Rect offset;
@@ -189,4 +201,113 @@ void func::ApplySurface1(SDL_Surface*object,SDL_Surface*background,SDL_Rect *fra
     offset.y=y;
     SDL_BlitSurface(object,frame,background,&offset);
 }
+//SHOW MENU START ON THE SCREEN
+bool func::ShowMenu(SDL_Surface*background, TTF_Font *textFont,SDL_Surface*menuScreen, SDL_Window *window)
+{
+    //************************************
+	//	1. Set Preposition for menu
+	//	2. Input keyboard event
+	//	3. If press double space, game start
+	//************************************
+    menuScreen=LoadSurface("menu.png", background);
+    if(menuScreen==NULL)
+    {
+        return 1;
+    }
+    SDL_Rect menuItem;
+    menuItem.x=150;
+    menuItem.y=550;
 
+    Font textMenu;
+    textMenu.SetText("PRESS DOUBLE SPACE TO START");
+    textMenu.SetColor({255,255,0});
+    SDL_Event e;
+    while(true){
+        func::ApplySurface(menuScreen,background,0,0);
+        textMenu.drawText(background,70,menuItem.x,menuItem.y,textFont,"Aller_Bd.ttf");
+        while(SDL_PollEvent(&e))
+        {
+            if(e.type==SDL_KEYDOWN)
+            {
+
+                if(e.key.keysym.sym==SDLK_SPACE)
+                {
+                    return true;
+                }
+                else if(e.key.keysym.sym==SDLK_ESCAPE)
+                {
+                    return 0;
+                }
+
+
+            }
+            if(e.type==SDL_QUIT)
+            {
+                return 0;
+            }
+        }
+        SDL_UpdateWindowSurface(window);
+    }
+    return false;
+}
+//SHOW MENU PLAY AGAIN WHEN YOU LOSE
+bool func::ShowMenu2(SDL_Surface*background,int score, TTF_Font *textFont, SDL_Surface *menuScreen,SDL_Window*window,SDL_Surface*LoadImage)
+{
+    //************************************
+	//	1. Set Preposition for menu
+	//	2. Input keyboard event
+	//	3. If press double backspace, game start
+	//************************************
+    menuScreen=LoadSurface("EXIT.png", background);
+    if(menuScreen==NULL)
+    {
+        return 1;
+    }
+    SDL_Rect menuItem;
+
+    menuItem.x=350;
+    menuItem.y=300;
+    Font textMenu;
+    std::string highscore("YOUR HIGH SCORE: ");
+    std::string highscore1=to_string(score);
+    highscore+=highscore1;
+    textMenu.SetText(highscore);
+    textMenu.SetColor({255,255,0});
+    SDL_Rect playAgain;
+    playAgain.x=80;
+    playAgain.y=550;
+    Font play;
+    play.SetText("PRESS DOUBLE BACKSPACE TO PLAY AGAIN");
+    SDL_Event e;
+    while(true){
+        func::ApplySurface(menuScreen,background,0,0);
+        textMenu.drawText(background,60,menuItem.x,menuItem.y,textFont,"Aller_Bd.ttf");
+        play.drawText(background,60,playAgain.x, playAgain.y, textFont,"Aller_Bd.ttf");
+        while(SDL_PollEvent(&e))
+        {
+            if(e.type==SDL_KEYDOWN)
+            {
+                if(e.key.keysym.sym==SDLK_BACKSPACE)
+                {
+
+                    return true;
+                }
+                if(e.key.keysym.sym==SDLK_ESCAPE)
+                {
+
+                    return 0;
+                }
+            }
+
+            if(e.type==SDL_QUIT)
+            {
+                func::close(LoadImage,window);
+                    TTF_Quit();
+                    IMG_Quit();
+                    SDL_Quit();
+                return 0;
+            }
+        }
+        SDL_UpdateWindowSurface(window);
+    }
+}

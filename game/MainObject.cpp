@@ -13,6 +13,7 @@ MainObject::MainObject()
 MainObject::~MainObject()
 {
 }
+//INPUT ACTION OF PLANE FROM KEYBOARD
 void MainObject::InputAction(SDL_Event e, SDL_Surface* &screenSurface,Mix_Chunk* soundButllet[2])
 {
     if(e.type==SDL_KEYDOWN)
@@ -57,7 +58,7 @@ void MainObject::InputAction(SDL_Event e, SDL_Surface* &screenSurface,Mix_Chunk*
                 break;
         }
     }
-    //dòng 61 đến dòng 73 tham khảo thuật toán tại https://phattrienphanmem123az.com/lap-trinh-game-cpp/bai-7-dan-ban-va-xu-ly-chuot.html
+    //INPUT ACTION OF BUTLLET FROM MOUSE
     else if(e.type==SDL_MOUSEBUTTONDOWN)
     {
         Butllet* listButllet01 =new Butllet();
@@ -72,10 +73,11 @@ void MainObject::InputAction(SDL_Event e, SDL_Surface* &screenSurface,Mix_Chunk*
         listButllet.push_back(listButllet01);
     }
 }
-void MainObject::move(const int SCREEN_HEIGHT, const int SCREEN_WIDTH)
+//AVOID THE PLANE OF THE SCREEN
+void MainObject::move(const int &SCREEN_HEIGHT, const int &SCREEN_WIDTH)
 {
     rect.x+=x_object;
-    if(rect.x<0 || rect.x+LENGTH_OF_PLANE > SCREEN_WIDTH)
+    if(rect.x<0 || rect.x+PLANE_WIDTH > SCREEN_WIDTH)
     {
         rect.x-=x_object;
     }
@@ -85,19 +87,20 @@ void MainObject::move(const int SCREEN_HEIGHT, const int SCREEN_WIDTH)
         rect.y-=y_object;
     }
 }
+//REMOVE BUTLLET WHEN COLLISION
 void MainObject::RemoveButllet(const int & x_butllet)
 {
     for(int iii=0; iii<listButllet.size(); iii++)
     {
-            if(x_butllet <listButllet.size())
+         if(x_butllet <listButllet.size() && x_butllet >= 0)
         {
             Butllet *amo=listButllet.at(x_butllet);
-            listButllet.erase(listButllet.begin() + iii);
             if(amo!=NULL)
             {
                 delete amo;
                 amo=NULL;
             }
+            listButllet.erase(listButllet.begin() + x_butllet);
         }
     }
 }

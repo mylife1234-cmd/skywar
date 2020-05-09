@@ -13,6 +13,7 @@ Baseobject::~Baseobject()
         SDL_FreeSurface(plane);
     }
 }
+//LOAD OBJECT
 bool Baseobject::Loading(std::string path,SDL_Surface*&screenSurface)
 {
     plane=LoadSurface(path,screenSurface);
@@ -22,6 +23,7 @@ bool Baseobject::Loading(std::string path,SDL_Surface*&screenSurface)
     }
     return true;
 }
+//SHOW OJECT ON SCREEN
 void Baseobject::showObject(SDL_Surface*background)
 {
     if(plane!=NULL)

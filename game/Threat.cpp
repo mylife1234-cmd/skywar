@@ -7,8 +7,6 @@ Threat::Threat()
     rect.y=RANGE;
     rect.w=THREAT_WIDTH;
     rect.h=THREAT_HEIGHT;
-    x_threat=0;
-    y_threat=0;
 }
 Threat::~Threat()
 {
@@ -16,8 +14,9 @@ Threat::~Threat()
 }
   void Threat::GetThreatMove(const int &width, const int& height)
  {
+    int SPEED_THREAT=5;
     rect.x-=SPEED_THREAT;
-    x_threat+=INCREASE_SPEED;
+    SPEED_THREAT+=INCREASE_SPEED;
     if(rect.x<0)
     {
         rect.x=1200;

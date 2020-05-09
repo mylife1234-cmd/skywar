@@ -9,7 +9,6 @@ struct Butllet :Baseobject
     bool move;
     Butllet();
     ~Butllet();
-    void InputButlletAction(SDL_Event e);
     void GetButlletMove(const int & width, const int & height);
     bool ButlletMove(){
         return move;
