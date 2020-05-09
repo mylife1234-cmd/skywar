@@ -10,6 +10,7 @@ Tính năng:
 + nhận input từ chuột để bắn đạn, từ bàn phím để di chuyển nhân vật
 + tạo dc menu game over, game start, có chế độ chơi lại
 + có tính năng lưu điểm cao nhất
++ đưa âm thanh vào game
   Lỗi chưa xử lí được
 +thỉnh thoảng không điều khiển được máy bay, thỉnh thoảng va chạm ko xảy ra
 +chưa làm dc bản đồ chuẩn: chưa áp dụng được kỹ thuật tạo map cho trò chơi
